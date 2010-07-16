@@ -1,8 +1,8 @@
 module Jsonr
 
-  class TemplateHandler < ActionView::TemplateHandler
+  class TemplateHandler < ::ActionView::TemplateHandler
 
-    include ActionView::TemplateHandlers::Compilable
+    include ::ActionView::TemplateHandlers::Compilable
 
     def compile(template)
       "@template_format = :html;" +
