@@ -1,5 +1,8 @@
 # Jsonr
 
+require 'active_support/ordered_hash'
+require 'active_support/json'
+
 module Jsonr
 
   class Generator
@@ -11,7 +14,7 @@ module Jsonr
 
     # Convert to a JSON string representation.
     def to_s
-      @commands.to_json
+      ActiveSupport::JSON.encode(@commands)
     end
 
     # Replaces a content of an element with given selector with given value.
@@ -93,7 +96,7 @@ module Jsonr
     #  page.flash :notice, "A person detail's were updated."
     #
     def flash(severity, message)
-      @commands[:flash] ||= {}
+      @commands[:flash] ||= ActiveSupport::OrderedHash.new
       @commands[:flash][severity] = message
     end
 
@@ -144,6 +147,11 @@ module Jsonr
       @commands[:remove].push *selectors
     end
 
+    # Sets given +key+ to a given +value+. Useful for passing custom objects.
+    #
+    # Example:
+    #
+    #  page.data :person, @person
     def data(key, value)
       @commands[key] = value
     end

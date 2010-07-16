@@ -1,4 +1,5 @@
 require 'jsonr/generator'
+
 if defined?(::ActionView)
   require 'jsonr/template_handler'
 
