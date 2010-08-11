@@ -24,8 +24,9 @@ module Jsonr
     #  # Redirect to persons listing.
     #  page.replace "#person_1", @person
     #
-    def replace(selector, content)
+    def replace(selector, content = nil, &block)
       @commands[:replace] ||= {}
+      content ||= yield
       @commands[:replace][selector] = content
     end
 
@@ -36,8 +37,9 @@ module Jsonr
     #  # Redirect to persons listing.
     #  page.append "#persons", @person
     #
-    def append(selector, content)
+    def append(selector, content = nil, &block)
       @commands[:append] ||= {}
+      content ||= yield
       @commands[:append][selector] = content
     end
 
@@ -48,8 +50,9 @@ module Jsonr
     #  # Redirect to persons listing.
     #  page.append "#persons", @person
     #
-    def prepend(selector, content)
+    def prepend(selector, content = nil, &block)
       @commands[:prepend] ||= {}
+      content ||= yield
       @commands[:prepend][selector] = content
     end
 
@@ -60,8 +63,9 @@ module Jsonr
     #  # Redirect to persons listing.
     #  page.replace_with "#person_1", @person
     #
-    def replace_with(selector, content)
+    def replace_with(selector, content = nil, &block)
       @commands[:replace_with] ||= {}
+      content ||= yield
       @commands[:replace_with][selector] = content
     end
 
@@ -72,8 +76,9 @@ module Jsonr
     #  # Redirect to persons listing.
     #  page.insert_before "#persons", @person
     #
-    def insert_before(selector, content)
+    def insert_before(selector, content = nil, &block)
       @commands[:insert_before] ||= {}
+      content ||= yield
       @commands[:insert_before][selector] = content
     end
 

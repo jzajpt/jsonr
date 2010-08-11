@@ -78,6 +78,21 @@ describe "Jsonr::Generator" do
   end
 
 
+  context "#replace with a block" do
+
+    it "convert to json object with replace key" do
+      generator = Jsonr::Generator.new do |page|
+        page.replace("#selector1") do
+          "content"
+        end
+      end
+
+      generator.to_s.should == %Q|{"replace":{"#selector1":"content"}}|
+    end
+
+  end
+
+
   %w(replace append prepend replace_with insert_before).each do |cmd|
 
     context "##{cmd}" do
@@ -88,6 +103,21 @@ describe "Jsonr::Generator" do
         end
 
         generator.to_s.should == %Q|{"#{cmd}":{"#selector1":"content"}}|
+      end
+
+    end
+
+
+    context "##{cmd} with block" do
+
+      it "convert to json object with #{cmd} key" do
+        generator = Jsonr::Generator.new do |page|
+          page.send(cmd, "#selector1") do
+            "block content"
+          end
+        end
+
+        generator.to_s.should == %Q|{"#{cmd}":{"#selector1":"block content"}}|
       end
 
     end
