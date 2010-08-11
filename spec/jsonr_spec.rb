@@ -93,7 +93,7 @@ describe "Jsonr::Generator" do
   end
 
 
-  %w(replace append prepend replace_with insert_before).each do |cmd|
+  %w(replace append prepend replace_with insert_before insert_after).each do |cmd|
 
     context "##{cmd}" do
 

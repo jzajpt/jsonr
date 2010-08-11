@@ -82,6 +82,19 @@ module Jsonr
       @commands[:insert_before][selector] = content
     end
 
+    # Inserts given content after an element with given selector.
+    #
+    # Example:
+    #
+    #  # Redirect to persons listing.
+    #  page.insert_before "#persons", @person
+    #
+    def insert_after(selector, content = nil, &block)
+      @commands[:insert_after] ||= {}
+      content ||= yield
+      @commands[:insert_after][selector] = content
+    end
+
     # Redirects a client to a given url.
     #
     # Example:
