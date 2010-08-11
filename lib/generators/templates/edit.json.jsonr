@@ -1,0 +1,3 @@
+page.replace '#content', content_tag(:h2, t_view('.title'))
+page.append '#content', render('<%= dir_name %>/form.html', :object => @<%= var_name %>)
+

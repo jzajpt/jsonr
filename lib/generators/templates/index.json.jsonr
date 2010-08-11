@@ -1,0 +1,2 @@
+page.replace '#content', link_to_new_<%= var_name %>
+page.append '#content', render_<%= collection_name %>(@<%= collection_name %>)

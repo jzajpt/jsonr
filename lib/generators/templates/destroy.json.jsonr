@@ -1,0 +1,3 @@
+page.data :<%= var_name %>, @<%= var_name %>
+page.flash :notice, t('.success', :name => @<%= var_name %>, :scope => :flash)
+page.redirect_to "##{<%= collection_name %>_path}"

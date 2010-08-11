@@ -1,0 +1,1 @@
+page.replace '#content', render('<%= var_name %>/<%= var_name %>.html')
