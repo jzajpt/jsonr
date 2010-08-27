@@ -106,6 +106,17 @@ module Jsonr
       @commands[:redirect_to] = url
     end
 
+    # Reloads layout using full path loading (each segment is loaded).
+    #
+    # Example:
+    #
+    #  # Redirect to persons listing.
+    #  page.redirect_to persons_url
+    #
+    def load(url)
+      @commands[:load] = url
+    end
+
     # Displays a flash notice.
     #
     # Example:

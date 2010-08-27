@@ -23,6 +23,18 @@ describe "Jsonr::Generator" do
 
   end
 
+  context "#load" do
+
+    it "converts to json object with load key" do
+      generator = Jsonr::Generator.new do |page|
+        page.load '/new/url'
+      end
+
+      generator.to_s.should == %Q|{"load":"/new/url"}|
+    end
+
+  end
+
   context "#flash" do
 
     it "converts to json object with flash key" do
