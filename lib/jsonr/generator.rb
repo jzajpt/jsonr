@@ -111,7 +111,7 @@ module Jsonr
     # Example:
     #
     #  # Redirect to persons listing.
-    #  page.redirect_to persons_url
+    #  page.load persons_url
     #
     def load(url)
       @commands[:load] = url
